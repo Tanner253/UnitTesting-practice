@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using lab02;
+using static lab02.Program;
 
 namespace XUnitTestlab02
 {
@@ -10,9 +10,9 @@ namespace XUnitTestlab02
         public void CanReturnANumber()
         {
             //Arrange
-
+            int param = 5;
             //Act
-            int output = ViewBalance(5);
+            int output = ViewBalance(param);
             //Assert
             Assert.Equal(5, output);
 

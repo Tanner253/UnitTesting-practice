@@ -40,26 +40,7 @@ namespace lab02
            int currentBalance = currentVal;
            return currentBalance;
         }
-        public static int addFunds(int currentBalance)
-        {
-            Console.Write("How much money would you like to Deposit?");
-            string intInput = Console.ReadLine();
-            int input = Convert.ToInt32(intInput);
 
-            //add conditionals
-            //if valid entry then -> take the current balance and add the input to it
-            //return current balance
-        }
-        public static int removeFunds(int currentBalance)
-        {
-            Console.Write("How much money would you like to Withdraw?");
-            string intInput = Console.ReadLine();
-            int input = Convert.ToInt32(intInput);
-
-            //add conditionals
-            //if valid entry then -> take the current balance and subtract the input to it
-            //return current balance
-        }
         public static void ExitProgram()
         {
             return;
