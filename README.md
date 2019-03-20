@@ -36,11 +36,11 @@ Then select and open ```UnitTesting.sln```
 ******
 
 ##### Application Start
-![Program launch](/images/cap1)
+![Program launch](/images/cap1.JPG)
 ##### Using the Application
-![Functionality Demo](/images/cap2)
+![Functionality Demo](/images/cap2.JPG)
 ##### Application End
-![End Program](/images/cap3)
+![End Program](/images/cap3.JPG)
 
 ------------------------------
 
