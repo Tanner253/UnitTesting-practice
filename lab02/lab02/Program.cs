@@ -2,9 +2,10 @@
 
 namespace lab02
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static int startingBalance = 2000;
+        public static void Main(string[] args)
         {
             string rawChoice;
             Console.WriteLine("Welcome to your virtual ATM:");
@@ -12,6 +13,7 @@ namespace lab02
             Console.WriteLine("2. Withdraw");
             Console.WriteLine("3. Deposit");
             Console.WriteLine("4. End");
+            
             rawChoice = Console.ReadLine();
             int choice = Convert.ToInt32(rawChoice);
             int caseSwitch = choice;
@@ -33,5 +35,11 @@ namespace lab02
 
             
         }
+        public static int ViewBalance(int currentVal)
+        {
+           int currentBalance = currentVal;
+           return currentBalance;
+        }
+       
     }
 }
