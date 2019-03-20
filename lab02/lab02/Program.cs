@@ -9,7 +9,7 @@ namespace lab02
         public static bool doWhileTrue = true;
         public static void Main(string[] args)
         {
-            
+
             
             do 
             {   int choice = GetSelection();
@@ -17,25 +17,39 @@ namespace lab02
                 switch (caseSwitch)
                 {
                     case 1:
+                        try
+                        {
+                            Console.WriteLine(ViewBalance());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
 
-                        Console.WriteLine(ViewBalance());
-                        
-                       // GetSelection();
-                        
+                        // GetSelection();
+
                         break;
                     case 2:
-                        Console.Write("How much money would you like to Withdraw?");
-                        string withdrawlAmount = Console.ReadLine();
-                        int intWithdrawl = Convert.ToInt32(withdrawlAmount);
-                        
-                        Console.WriteLine($"your new balance is {currentBalance} - {intWithdrawl} =");
-                        
-                        Console.WriteLine(RemoveFunds(currentBalance, intWithdrawl));
-                        
-                       // GetSelection();
-                        
+                        try
+                        {
+                            Console.Write("How much money would you like to Withdraw?");
+                            string withdrawlAmount = Console.ReadLine();
+                            int intWithdrawl = Convert.ToInt32(withdrawlAmount);
+
+                            Console.WriteLine($"your new balance is {currentBalance} - {intWithdrawl} =");
+
+                            Console.WriteLine(RemoveFunds(currentBalance, intWithdrawl));
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+
+                        // GetSelection();
+
                         break;
                     case 3:
+                        try { 
                         Console.Write("How much money would you like to Deposit?");
                         string intInput = Console.ReadLine();
                         int input = Convert.ToInt32(intInput);
@@ -43,12 +57,29 @@ namespace lab02
                         Console.WriteLine($"your new balance is {currentBalance} + {input} = ");
                         currentBalance = currentBalance + input;
                         Console.WriteLine($"{currentBalance}");
-                        
-                     //   GetSelection();
-                        
+                        }
+
+                         catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        //   GetSelection();
+
                         break;
                     case 4:
-                        ExitProgram();
+                        try
+                        {
+                            ExitProgram();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        finally
+                        {
+                            Console.WriteLine("program is complete");
+                            Console.ReadLine();
+                        }
                         break;
                 }
                 
@@ -70,6 +101,10 @@ namespace lab02
 
             rawChoice = Console.ReadLine();
             int choice = Convert.ToInt32(rawChoice);
+            if(choice < 0 && choice > 4)
+            {
+                GetSelection();
+            }
             return choice;
         }
         /// <summary>
@@ -87,11 +122,25 @@ namespace lab02
         /// <param name="currentBalance">the current ATM balance</param>
         /// <param name="input">The number equivilent to the funds the user would like to add</param>
         /// <returns>new current balance</returns>
-        public static int AddFunds(int currentBalance, int input)
+        public static string AddFunds(int currentBalance, int input)
         {
-            
-            currentBalance = currentBalance + input;
-            return currentBalance;
+            string strResult;
+            if (input <= 0)
+            {
+                strResult = "Please enter a number greater than 0";
+                
+
+            }
+            else
+            {
+
+                currentBalance = currentBalance + input;
+                strResult = currentBalance.ToString();
+
+
+              
+            }
+            return strResult;
         }
         /// <summary>
         /// will take current balance and subtract withdrawl amount
@@ -99,10 +148,27 @@ namespace lab02
         /// <param name="currentValue">current balance</param>
         /// <param name="withdrawl">the amount being subtracted from total</param>
         /// <returns>the new balance after math operation</returns>
-        public static int RemoveFunds(int currentValue, int withdrawl)
+        public static string RemoveFunds(int currentValue, int withdrawl)
          {
-            currentBalance = currentValue - withdrawl;
-            return currentBalance;
+            string strResult;
+           
+            if (currentBalance >= withdrawl)
+            {
+                currentBalance = currentValue - withdrawl;
+                strResult = currentBalance.ToString();
+                return strResult;
+            }
+            else if (currentBalance < withdrawl)
+            {
+                return strResult = "please enter a valid selection";
+
+
+            }else
+            {
+                return "string";
+            }
+            
+          
         }
         /// <summary>
         /// allows the user to exit the program
